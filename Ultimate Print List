@@ -8,7 +8,7 @@ typedef struct Node
 
 } t_node;
 
-void ultimate_print_list(t_node *list)
+void list_print(t_node *list)
 {
     t_node *head = list;
     
@@ -54,16 +54,12 @@ int main()
     t_node *new = NULL;
     int n;
 
-    printf("L: %p\n", &l);
-    printf("NEW: %p\n", &new);
-
     scanf("%d", &n);
 
     while(n >= 0)
     {
         //Allocazione e creazione del nuovo nodo
         new = malloc(sizeof(t_node));
-        printf("NEW: %p\n", &new);
         new->info = n;
         new->next = l;
 
