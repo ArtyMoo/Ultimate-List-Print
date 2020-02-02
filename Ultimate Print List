@@ -1,13 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct Node
-{
-    int info;
-    struct Node *next;
-
-} t_node;
-
 void list_print(t_node *list)
 {
     t_node *head = list;
@@ -43,33 +33,4 @@ void list_print(t_node *list)
     }
 
     printf("\n           NULL\n\n"); 
-}
-
-int main()
-{
-    /*
-    Dichiarazione e inizializzazione dei nodi, 
-    l adesso rappresenta l'ultimo elemento (NULL)*/
-    t_node *l = NULL;
-    t_node *new = NULL;
-    int n;
-
-    scanf("%d", &n);
-
-    while(n >= 0)
-    {
-        //Allocazione e creazione del nuovo nodo
-        new = malloc(sizeof(t_node));
-        new->info = n;
-        new->next = l;
-
-        //l adesso rappresenta la testa della lista 
-        l = new;
-        scanf("%d", &n);
-    }
-
-    //Stampa la lista
-    list_print(l);
-
-    return 0;
 }
