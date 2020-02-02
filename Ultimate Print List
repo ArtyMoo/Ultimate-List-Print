@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node
+{
+    int info;
+    struct Node *next;
+
+} t_node;
+
+void ultimate_print_list(t_node *list)
+{
+    t_node *head = list;
+    
+    while (list != NULL)
+    {
+        if(list == head)
+            printf("\n");
+        
+        printf(" _________________________\n");
+        printf("| Address: %p |\n", list);
+
+        if(list->info < 10)
+            printf("| Info: %d                 |\n", list->info);
+        else if(list->info < 100)
+            printf("| Info: %d                |\n", list->info);
+        else if(list->info < 1000)
+            printf("| Info: %d               |\n", list->info);
+        else 
+            printf("| Info: %d              |\n", list->info);
+
+        if(list->next != NULL)
+            printf("| Next: %p    |\n", list->next);
+        else
+            printf("| Next: NULL              |\n");
+
+        printf(" _________________________\n\n");
+        printf("            |\n");
+        printf("            |\n");
+        printf("            V\n");
+
+        list = list->next;
+    }
+
+    printf("\n           NULL\n\n"); 
+}
+
+void create_list(t_node **list, int el)
+{
+    t_node *new = malloc(sizeof(t_node));
+
+    new->info = el;
+    new->next = *list;
+    *list = new;
+}
+
+int main()
+{
+    t_node *l = NULL;
+    int n;
+
+    scanf("%d", &n);
+
+    while (n>=0)
+    {
+        create_list(&l, n);
+        scanf("%d", &n);
+    }
+    
+    ultimate_print_list(l);   
+
+    return 0;
+}
