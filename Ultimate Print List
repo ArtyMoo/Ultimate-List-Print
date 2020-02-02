@@ -45,29 +45,35 @@ void ultimate_print_list(t_node *list)
     printf("\n           NULL\n\n"); 
 }
 
-void create_list(t_node **list, int el)
-{
-    t_node *new = malloc(sizeof(t_node));
-
-    new->info = el;
-    new->next = *list;
-    *list = new;
-}
-
 int main()
 {
+    /*
+    Dichiarazione e inizializzazione dei nodi, 
+    l adesso rappresenta l'ultimo elemento (NULL)*/
     t_node *l = NULL;
+    t_node *new = NULL;
     int n;
+
+    printf("L: %p\n", &l);
+    printf("NEW: %p\n", &new);
 
     scanf("%d", &n);
 
-    while (n>=0)
+    while(n >= 0)
     {
-        create_list(&l, n);
+        //Allocazione e creazione del nuovo nodo
+        new = malloc(sizeof(t_node));
+        printf("NEW: %p\n", &new);
+        new->info = n;
+        new->next = l;
+
+        //l adesso rappresenta la testa della lista 
+        l = new;
         scanf("%d", &n);
     }
-    
-    ultimate_print_list(l);   
+
+    //Stampa la lista
+    list_print(l);
 
     return 0;
 }
