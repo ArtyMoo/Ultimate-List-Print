@@ -2,8 +2,7 @@ void list_print(t_node *list)
 {
     t_node *head = list;
     
-    while (list != NULL)
-    {
+    while (list != NULL) {
         if(list == head)
             printf("\n");
         
